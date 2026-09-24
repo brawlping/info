@@ -3,7 +3,7 @@
 
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
-    <title>brawlping.info</title>
+    <title>brawlping</title>
     <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1'/>
     <meta name='description'
@@ -219,6 +219,25 @@ th:last-child, td:last-child {
 /* Red (> 250ms) */
 .ping-icon-red {
   filter: drop-shadow(0px 0px 5px rgba(255, 51, 51, 0.7));
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 10px; }
+  button {
+    font-size: clamp(26px, 8.5vw, 45px);
+    padding: 20px 28px 28px;
+    margin: 16px 0;
+    max-width: 100%;
+  }
+  th, td {
+    padding: 10px;
+    font-size: clamp(12px, 3.5vw, 17px);
+    letter-spacing: 0;
+  }
+  th { font-size: clamp(14px, 4vw, 20px); }
+  .server-cell { gap: 8px; white-space: nowrap; }
+  .region-strip { height: 24px; }
+  td.latency { padding-left: 4px; }
 }
 
 </style>
@@ -458,7 +477,7 @@ th:last-child, td:last-child {
                     CN/Shanghai (Shanghai🇨🇳)</td>
                 </div>
             </td>
-            <td class='latency' pingUrl='https://cvm.cn-shanghai.tencentcloudapi.com'>&nbsp;
+            <td class='latency' pingUrl='https://cvm.ap-shanghai.tencentcloudapi.com'>&nbsp;
             </td>
         </tr>
         <tr>
@@ -468,7 +487,7 @@ th:last-child, td:last-child {
                     CN/Beijing (Beijing🇨🇳)</td>
                 </div>
             </td>
-            <td class='latency' pingUrl='https://cvm.cn-beijing.tencentcloudapi.com'>&nbsp;
+            <td class='latency' pingUrl='https://cvm.ap-beijing.tencentcloudapi.com'>&nbsp;
             </td>
         </tr>
         <tr>
@@ -478,7 +497,7 @@ th:last-child, td:last-child {
                     CN/Guangzhou (Guangzhou🇨🇳)</td>
                 </div>
             </td>
-            <td class='latency' pingUrl='https://cvm.cn-guangzhou.tencentcloudapi.com'>&nbsp;
+            <td class='latency' pingUrl='https://cvm.ap-guangzhou.tencentcloudapi.com'>&nbsp;
             </td>
         </tr>
         <tr>
@@ -488,7 +507,7 @@ th:last-child, td:last-child {
                     CN/Chongqing (Chongqing🇨🇳)</td>
                 </div>
             </td>
-            <td class='latency' pingUrl='https://cvm.cn-chongqing.tencentcloudapi.com'>&nbsp;
+            <td class='latency' pingUrl='https://cvm.ap-chongqing.tencentcloudapi.com'>&nbsp;
             </td>
         </tr>
         </tbody>
