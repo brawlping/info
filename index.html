@@ -23,15 +23,15 @@
 
     h1, h2, h3, p {
         text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 0px 4px 0 #000;
-        letter-spacing: 1px;
+        letter-spacing: 0.1px;
     }
 
 button {
   font-family: 'Lilita One', sans-serif;
-  font-size: 45px;
+  font-size: 50px;
   color: #ffffff;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 0.1px;
   
   /* Pushes text HIGHER up inside the button (10px top, 22px bottom) */
   padding: 30px 50px 40px 50px;
@@ -50,17 +50,11 @@ button {
   border: 3.5px solid #000000;
   box-shadow: 
     0px 6px 0px #000000,
-    inset 0px 3px 0px rgba(255, 255, 255, 0.7);
+    inset 0px 5px 0px rgba(255, 255, 255, 0.7);
   
-  /* 3D White Text Outline & Shadow */
-  text-shadow: 
-    -2px -2px 0 #000,  
-     2px -2px 0 #000,
-    -2px  2px 0 #000,
-     2px  2px 0 #000,
-     0px  5px 0 #000,
-     2px  5px 0 #000,
-    -2px  5px 0 #000;
+color: #fff;
+-webkit-text-stroke: 2px #000;
+text-shadow: 0px 4px 0 #000;
 
   transition: transform 0.06s ease-in-out;
 }
@@ -250,7 +244,7 @@ th:last-child, td:last-child {
 </header>
 <main>
     <p style="font-size: 20px; max-width: 700px; margin: 25px auto 6px auto; text-align: center; line-height: 1.3; color: #ffffff; letter-spacing: -0.3px;">
-  Click the "PING SERVERS" button to measure the latency from your browser to the datacenters where the Brawl Stars servers are located.
+  Click the "PING SERVERS" button to measure the latency from your device to the datacenters where the Brawl Stars servers are located.
 </p>
 
     <p>
@@ -262,7 +256,7 @@ th:last-child, td:last-child {
     <table>
         <thead>
         <tr>
-            <th>Server Location</th>
+            <th>Server Region</th>
             <th>Latency</th>
         </tr>
         </thead>
@@ -275,7 +269,7 @@ th:last-child, td:last-child {
             <td>
                 <div class="server-cell">
                     <span class="region-strip strip-EA"></span>
-                    AP/Japan (Tokyo🇯🇵)</td>
+                    AP|Japan (Tokyo🇯🇵)</td>
                 </div>
             </td>
             <td class='latency' pingUrl='https://dynamodb.ap-northeast-1.amazonaws.com/ping'>
@@ -286,7 +280,7 @@ th:last-child, td:last-child {
            <td>
                 <div class="server-cell">
                     <span class="region-strip strip-EA"></span>
-                    AP/HongKong (Hong Kong🇭🇰)</td>
+                    AP|HongKong (Hong Kong🇭🇰)</td>
                 </div>
             </td>
             <td class='latency' pingUrl='https://dynamodb.ap-east-1.amazonaws.com/ping'>&nbsp;</td>
@@ -295,7 +289,7 @@ th:last-child, td:last-child {
          <td>
                 <div class="server-cell">
                     <span class="region-strip strip-SEA"></span>
-                    AP/Singapore (Singapore🇸🇬)</td>
+                    AP|Singapore (Singapore🇸🇬)</td>
                 </div>
             </td>
             <td class='latency' pingUrl='https://dynamodb.ap-southeast-1.amazonaws.com/ping'>
@@ -306,7 +300,7 @@ th:last-child, td:last-child {
             <td>
                 <div class="server-cell">
                     <span class="region-strip strip-SEA"></span>
-                    AP/Sydney (Sydney🇦🇺)</td>
+                    AP|Sydney (Sydney🇦🇺)</td>
                 </div>
             </td>
             <td class='latency' pingUrl='https://dynamodb.ap-southeast-2.amazonaws.com/ping'>
@@ -317,7 +311,7 @@ th:last-child, td:last-child {
             <td>
                 <div class="server-cell">
                     <span class="region-strip strip-SAS"></span>
-                    AP/India (Mumbai🇮🇳)</td>
+                    AP|India (Mumbai🇮🇳)</td>
                 </div>
             </td>
             <td class='latency' pingUrl='https://dynamodb.ap-south-1.amazonaws.com/ping'>&nbsp;</td>
@@ -326,7 +320,7 @@ th:last-child, td:last-child {
             <td>
                 <div class="server-cell">
                     <span class="region-strip strip-EMEA"></span>
-                    EU/Ireland (Dublin🇮🇪)</td>
+                    EU|Ireland (Dublin🇮🇪)</td>
                 </div>
             </td>
             <td class='latency' pingUrl='https://dynamodb.eu-west-1.amazonaws.com/ping'>&nbsp;</td>
@@ -335,7 +329,7 @@ th:last-child, td:last-child {
             <td>
                 <div class="server-cell">
                     <span class="region-strip strip-EMEA"></span>
-                    EU/Germany-2 (Frankfurt🇩🇪)</td>
+                    EU|Germany-2 (Frankfurt🇩🇪)</td>
                 </div>
             </td>
             <td class='latency' pingUrl='https://dynamodb.eu-central-1.amazonaws.com/ping'>&nbsp;
@@ -345,7 +339,7 @@ th:last-child, td:last-child {
             <td>
                 <div class="server-cell">
                     <span class="region-strip strip-EMEA"></span>
-                    EU/Italy (Milan🇮🇹)</td>
+                    EU|Italy (Milan🇮🇹)</td>
                 </div>
             </td>
             <td class='latency' pingUrl='https://dynamodb.eu-south-1.amazonaws.com/ping'>&nbsp;</td>
@@ -354,7 +348,7 @@ th:last-child, td:last-child {
             <td>
                 <div class="server-cell">
                     <span class="region-strip strip-EMEA"></span>
-                    EU/Finland (Hamina🇫🇮)</td>
+                    EU|Finland (Hamina🇫🇮)</td>
                 </div>
             </td>
             <td class='latency' pingUrl='https://europe-north1-5tkroniexa-lz.a.run.app/ping'>&nbsp;
@@ -364,7 +358,7 @@ th:last-child, td:last-child {
             <td>
                 <div class="server-cell">
                     <span class="region-strip strip-EMEA"></span>
-                    EU/Germany-1 (Frankfurt🇩🇪)</td>
+                    EU|Germany-1 (Frankfurt🇩🇪)</td>
                 </div>
             </td>
             <td class='latency' pingUrl='https://europe-west3-5tkroniexa-ey.a.run.app/ping'>&nbsp;
@@ -374,7 +368,7 @@ th:last-child, td:last-child {
             <td>
                 <div class="server-cell">
                     <span class="region-strip strip-EMEA"></span>
-                    ME/Riyadh (Riyadh🇸🇦)</td>
+                    ME|Riyadh (Riyadh🇸🇦)</td>
                 </div>
             </td>
             <td class='latency' pingUrl='https://cvm.me-saudi-arabia.tencentcloudapi.com'>&nbsp;
@@ -384,7 +378,7 @@ th:last-child, td:last-child {
             <td>
                 <div class="server-cell">
                     <span class="region-strip strip-EMEA"></span>
-                    ME/Dammam (Dammam🇸🇦)</td>
+                    ME|Dammam (Dammam🇸🇦)</td>
                 </div>
             </td>
             <td class='latency' pingUrl='https://me-central2-5tkroniexa-wx.a.run.app/ping'>&nbsp;</td>
@@ -393,7 +387,7 @@ th:last-child, td:last-child {
             <td>
                 <div class="server-cell">
                     <span class="region-strip strip-SA"></span>
-                    SA/Brasil-2 (Sao Paulo🇧🇷)</td>
+                    SA|Brasil-2 (Sao Paulo🇧🇷)</td>
                 </div>
             </td>
             <td class='latency' pingUrl='https://dynamodb.sa-east-1.amazonaws.com/ping'>&nbsp;</td>
@@ -402,7 +396,7 @@ th:last-child, td:last-child {
             <td>
                 <div class="server-cell">
                     <span class="region-strip strip-SAW"></span>
-                    SA/Peru (Lima🇵🇪)</td>
+                    SA|Peru (Lima🇵🇪)</td>
                 </div>
             </td>
             <td class='latency' pingUrl='https://us-east-1-lim-1a.aws-latency-test.com/'>&nbsp;</td>
@@ -411,7 +405,7 @@ th:last-child, td:last-child {
             <td>
                 <div class="server-cell">
                     <span class="region-strip strip-SAW"></span>
-                    SA/Chile-2 (Santiago🇨🇱)</td>
+                    SA|Chile-2 (Santiago🇨🇱)</td>
                 </div>
             </td>
             <td class='latency' pingUrl='https://us-east-1-scl-1a.aws-latency-test.com/'>&nbsp;</td>
@@ -420,7 +414,7 @@ th:last-child, td:last-child {
             <td>
                 <div class="server-cell">
                     <span class="region-strip strip-NA"></span>
-                    NA/Virginia (Ashburn🇺🇸)</td>
+                    NA|Virginia (Ashburn🇺🇸)</td>
                 </div>
             </td>
             <td class='latency' pingUrl='https://dynamodb.us-east-1.amazonaws.com/ping'>&nbsp;</td>
@@ -429,7 +423,7 @@ th:last-child, td:last-child {
             <td>
                 <div class="server-cell">
                     <span class="region-strip strip-NA"></span>
-                    NA/Oregon (Boardman🇺🇸)</td>
+                    NA|Oregon (Boardman🇺🇸)</td>
                 </div>
             </td>
             <td class='latency' pingUrl='https://dynamodb.us-west-2.amazonaws.com/ping'>&nbsp;</td>
@@ -438,7 +432,7 @@ th:last-child, td:last-child {
             <td>
                 <div class="server-cell">
                     <span class="region-strip strip-NA"></span>
-                    NA/LosAngeles (Los Angeles🇺🇸)</td>
+                    NA|LosAngeles (Los Angeles🇺🇸)</td>
                 </div>
             </td>
             <td class='latency' pingUrl='https://us-west-2-lax-1a.aws-latency-test.com/'>&nbsp;</td>
@@ -447,7 +441,7 @@ th:last-child, td:last-child {
             <td>
                 <div class="server-cell">
                     <span class="region-strip strip-NA"></span>
-                    NA/Miami (Miami🇺🇸)</td>
+                    NA|Miami (Miami🇺🇸)</td>
                 </div>
             </td>
             <td class='latency' pingUrl='https://us-east-1-mia-1a.aws-latency-test.com/'>&nbsp;</td>
@@ -456,7 +450,7 @@ th:last-child, td:last-child {
             <td>
                 <div class="server-cell">
                     <span class="region-strip strip-NA"></span>
-                    NA/Dallas (Dallas🇺🇸)</td>
+                    NA|Dallas (Dallas🇺🇸)</td>
                 </div>
             </td>
             <td class='latency' pingUrl='https://us-east-1-dfw-1a.aws-latency-test.com/'>&nbsp;</td>
@@ -474,7 +468,7 @@ th:last-child, td:last-child {
             <td>
                 <div class="server-cell">
                     <span class="region-strip strip-CNML"></span>
-                    CN/Shanghai (Shanghai🇨🇳)</td>
+                    CN|Shanghai (Shanghai🇨🇳)</td>
                 </div>
             </td>
             <td class='latency' pingUrl='https://cvm.ap-shanghai.tencentcloudapi.com'>&nbsp;
@@ -484,7 +478,7 @@ th:last-child, td:last-child {
             <td>
                 <div class="server-cell">
                     <span class="region-strip strip-CNML"></span>
-                    CN/Beijing (Beijing🇨🇳)</td>
+                    CN|Beijing (Beijing🇨🇳)</td>
                 </div>
             </td>
             <td class='latency' pingUrl='https://cvm.ap-beijing.tencentcloudapi.com'>&nbsp;
@@ -494,7 +488,7 @@ th:last-child, td:last-child {
             <td>
                 <div class="server-cell">
                     <span class="region-strip strip-CNML"></span>
-                    CN/Guangzhou (Guangzhou🇨🇳)</td>
+                    CN|Guangzhou (Guangzhou🇨🇳)</td>
                 </div>
             </td>
             <td class='latency' pingUrl='https://cvm.ap-guangzhou.tencentcloudapi.com'>&nbsp;
@@ -504,7 +498,7 @@ th:last-child, td:last-child {
             <td>
                 <div class="server-cell">
                     <span class="region-strip strip-CNML"></span>
-                    CN/Chongqing (Chongqing🇨🇳)</td>
+                    CN|Chongqing (Chongqing🇨🇳)</td>
                 </div>
             </td>
             <td class='latency' pingUrl='https://cvm.ap-chongqing.tencentcloudapi.com'>&nbsp;
@@ -514,14 +508,15 @@ th:last-child, td:last-child {
     </table>
 
     <h2>About</h2>
-    <div class="footer-text">
-  Information taken from<br>
-  <a href="https://brawlstars.fandom.com/wiki/Server_Locations" target="_blank">The Brawl Stars wiki</a>
-</div><br>
 
 <div class="footer-text">
   Created and updated by<br>
   <a href="https://x.com/LM_BS10" target="_blank">LM</a>
+</div><br>
+
+ <div class="footer-text">
+  Based on information from<br>
+  <a href="https://brawlstars.fandom.com/wiki/Server_Locations" target="_blank">The Brawl Stars Wiki</a>
 </div><br>
 
 <div class="footer-text">
@@ -532,13 +527,15 @@ th:last-child, td:last-child {
 
 <footer class="disclaimer-text">
     <hr/>
-    <p>Brawl Stars is a trademark of Supercell Oy. This content is not affiliated with, endorsed, sponsored, or specifically approved by Supercell and Supercell is not responsible for it. For more information, please see <a href="https://supercell.com/en/fan-content-policy" target="_blank">Supercell's Fan Content Policy</a>.</p>
+    <p>Brawl Stars is a trademark of Supercell Oy. This content is not affiliated with, endorsed, sponsored, or specifically approved by Supercell and Supercell is not responsible for it. For more information, please visit <a href="https://supercell.com/en/fan-content-policy" target="_blank">Supercell's Fan Content Policy</a>.</p>
     <p id=legalese>
       
     </p>
 </footer>
 
 <script type='text/javascript'>
+
+    document.addEventListener('touchstart', function() {}, {passive: true});
 
     function currentTimeMillis() {
         return (new Date()).getTime();
