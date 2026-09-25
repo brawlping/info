@@ -556,11 +556,11 @@ th:last-child, td:last-child {
   }
 }
    function elapsedMillisToIcon(elapsed) {
-  if (elapsed < 75) {
+  if (elapsed < 50) {
     return ' <span class="ping-icon-green">🟢</span>';
-  } else if (elapsed < 150) {
+  } else if (elapsed < 125) {
     return ' <span class="ping-icon-yellow">🟡</span>';
-  } else if (elapsed < 250) {
+  } else if (elapsed < 200) {
     return ' <span class="ping-icon-orange">🟠</span>';
   } else {
     return ' <span class="ping-icon-red">🔴</span>';
