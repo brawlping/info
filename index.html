@@ -244,7 +244,9 @@ th:last-child, td:last-child {
 </header>
 <main>
     <p style="font-size: 20px; max-width: 700px; margin: 25px auto 6px auto; text-align: center; line-height: 1.3; color: #ffffff; letter-spacing: -0.3px;">
-  Click the "PING SERVERS" button to measure the latency from your device to the datacenters where the Brawl Stars servers are located.
+  Click the "PING SERVERS" button to measure the latency from your device to the datacenters where the Brawl Stars servers are located.<br><br>
+
+  DISCLAIMER: This website is currently work in progress. Latencies can sometimes be off by around 5ms!
 </p>
 
     <p>
@@ -537,9 +539,9 @@ th:last-child, td:last-child {
 
     document.addEventListener('touchstart', function() {}, {passive: true});
 
-    function currentTimeMillis() {
-        return (new Date()).getTime();
-    }
+function currentTimeMillis() {
+    return performance.now();
+}
     async function fetchUrl(url, supportsCors, abortController) {
   const OPTS = {
     signal: abortController.signal,
@@ -594,8 +596,10 @@ for (let i = 0; i < 3; i++) {
     }
 }
 
-const elapsed = lowestElapsed;
-            box.innerHTML= elapsed.toString() + ' ms ' + elapsedMillisToIcon(elapsed);
+let rawElapsed = lowestElapsed;
+let correctedElapsed = Math.max(1, Math.round(rawElapsed - (window.browserOverhead || 0)));
+
+box.innerHTML = correctedElapsed.toString() + ' ms ' + elapsedMillisToIcon(correctedElapsed);
             clearTimeout(timeoutId);
         } catch (e) {
             if (timedOut && e instanceof DOMException && (e.name === 'AbortError')) {
@@ -618,19 +622,40 @@ const elapsed = lowestElapsed;
     }
 
     const pingButton = document.getElementById('pingButton');
-    pingButton.addEventListener('click', async function () {
-        pingButton.setAttribute('disabled', 'disabled');
-        let latencyBoxes = Array.from(document.querySelectorAll('.latency'));
-        latencyBoxes.reverse();
-        await Promise.all([
-            worker(latencyBoxes),
-            worker(latencyBoxes),
-            worker(latencyBoxes),
-            worker(latencyBoxes),
-            worker(latencyBoxes),
-        ]);
-        pingButton.removeAttribute('disabled');
-    });
+   pingButton.addEventListener('click', async function () {
+  pingButton.setAttribute('disabled', 'disabled');
+
+  // Measure local browser delay once when pinging starts
+  window.browserOverhead = await getLocalBrowserOverhead();
+
+  let latencyBoxes = Array.from(document.querySelectorAll('.latency'));
+  latencyBoxes.reverse();
+
+  await Promise.all([
+    worker(latencyBoxes),
+    worker(latencyBoxes),
+    worker(latencyBoxes),
+    worker(latencyBoxes),
+    worker(latencyBoxes),
+  ]);
+
+  pingButton.removeAttribute('disabled');
+});
+
+    async function getLocalBrowserOverhead() {
+    try {
+        const blobUrl = URL.createObjectURL(new Blob(['']));
+        const start = performance.now();
+        await fetch(blobUrl, { cache: 'no-store' });
+        URL.revokeObjectURL(blobUrl);
+        
+        const overhead = performance.now() - start;
+        // Cap the overhead correction between 0ms and 10ms to prevent over-correction
+        return Math.min(Math.max(overhead, 0), 10);
+    } catch (e) {
+        return 0; // Fallback if blob URLs are restricted
+    }
+}
 
 </script>
 
