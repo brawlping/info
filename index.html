@@ -5,7 +5,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
     <title>Brawlping</title>
     <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1'/>
+    <meta name='viewport' content='width=device-width, initial-scale=1, viewport-fit=cover'/>
     <meta name='description'
           content='A website for measuring network latency from your device to various cloud provider datacenters where the Brawl Stars servers are located.'>
     <style>
@@ -161,6 +161,8 @@ th:last-child, td:last-child {
   text-decoration: underline;
 }
 
+.disclaimer-text a:hover{color:#72d5ff}
+
 /* Increases line spacing so text strokes don't overlap lines */
 .disclaimer-text, footer p {
   line-height: 1.6 !important;
@@ -234,9 +236,87 @@ th:last-child, td:last-child {
   td.latency { padding-left: 4px; }
 }
 
+/* ===== SIDEBAR / HAMBURGER (same as Brawlteams) ===== */
+body{padding-top:64px}   /* room for the hamburger above the title */
+
+/* the #hamburger selectors outrank Brawlping's global big-button styles */
+#hamburger{
+  position:fixed;top:14px;left:14px;width:44px;height:44px;max-width:none;margin:0;padding:0;
+  display:flex;align-items:center;justify-content:center;flex-direction:column;gap:5px;
+  background:#1a1438;border:3px solid #000;border-radius:10px;box-shadow:0 3px 0 #000;
+  transform:none;transition:none;cursor:pointer;z-index:1300;
+  color:#fff;font-size:16px;text-shadow:none;-webkit-text-stroke:0;
+  touch-action:manipulation;-webkit-tap-highlight-color:transparent;
+}
+#hamburger:active{transform:none;box-shadow:0 3px 0 #000}
+#hamburger span{display:block;width:22px;height:2.5px;background:#fff;border-radius:2px;transform:none;transition:transform .22s ease, opacity .22s ease, background .22s ease}
+#hamburger.active span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+#hamburger.active span:nth-child(2){opacity:0}
+#hamburger.active span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+#hamburger.active{background:#b71c1c;border-color:#000}
+#hamburger:hover{filter:brightness(1.25)}
+
+.sidebar{position:fixed;top:0;left:0;bottom:0;box-sizing:border-box;width:300px;max-width:80vw;background:#1a1438;border-right:3px solid #000;z-index:1290;transform:translateX(-100%);transition:transform .24s ease;overflow-y:auto;padding:70px 18px 24px;display:flex;flex-direction:column;gap:10px;text-align:center}
+.sidebar.active{transform:translateX(0)}
+.sidebar h2{margin:0 0 4px;color:#ffcc00;font-size:18px;text-transform:uppercase;letter-spacing:.5px}
+.sidebar .side-subtitle{margin:0 0 6px;color:#a0a0c0;font-size:13px;line-height:1.3}
+.sidebar .side-section{margin-top:0}
+.sidebar .side-section hr{border:0;height:1px;background:#444;margin:0 0 10px}
+.sidebar .side-link{display:flex;flex-direction:column;gap:2px;text-decoration:none;color:#d2cfe2;background:rgba(0,0,0,.25);border:2px solid #000;border-radius:8px;padding:10px 12px;transition:filter .15s, background .15s;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.sidebar .side-link:hover{filter:brightness(1.3);background:#2b2254}
+.sidebar .side-link b{color:#fff;font-size:15px}
+.sidebar .side-link small{color:#a0a0c0;font-size:12px;line-height:1.3}
+.sidebar-footer{margin-top:auto;font-size:12px;color:#7a7aa0}
+.sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:1280}
+.sidebar-overlay.active{display:block}
+
+@media (max-width:600px){
+  .sidebar{width:100%;max-width:100%;border-right:0}
+}
+/* touch devices: smaller buttons, safe-area aware, no hover effects */
+@media (hover:none),(pointer:coarse){
+  #hamburger{width:34px;height:34px;top:8px;gap:4px;border-width:2.5px;border-radius:8px;box-shadow:0 2px 0 #000;left:max(8px,env(safe-area-inset-left))}
+  #hamburger:active{box-shadow:0 2px 0 #000}
+  #hamburger span{width:17px;height:2px}
+  #hamburger.active span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+  #hamburger.active span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+  #hamburger:hover{filter:none}
+  .sidebar .side-link:hover{filter:none;background:rgba(0,0,0,.25)}
+}
+html{scrollbar-gutter:stable}
+
 </style>
 </head>
 <body>
+
+    <button id="hamburger" class="hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar">
+  <span></span><span></span><span></span>
+</button>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+<aside class="sidebar" id="sidebar" aria-hidden="true">
+  <h2>Brawlping</h2>
+  <p class="side-subtitle">Some other cool websites:</p>
+  <div class="side-section">
+    <hr>
+    <div class="side-link" data-url="https://brawlteams.github.io/rosters/" role="link" tabindex="0">
+      <b>Brawlteams</b>
+      <small>View and edit Brawl Esports rosters</small>
+    </div>
+    <div class="side-link" data-url="https://brawlstars.fandom.com/wiki/Brawl_Stars_Wiki" role="link" tabindex="0">
+      <b>Brawl Stars Wiki</b>
+      <small>The encyclopedia for Brawl Stars</small>
+    </div>
+    <div class="side-link" data-url="https://www.leafstats.net" role="link" tabindex="0">
+      <b>Leafstats</b>
+      <small>Brawl Stars competitive data and analytics</small>
+    </div>
+    <div class="side-link" data-url="https://www.bsen.news/news" role="link" tabindex="0">
+      <b>BSEN</b>
+      <small>Latest Brawl Esports news</small>
+    </div>
+  </div>
+  <div class="sidebar-footer">Brawlping &mdash; Latency tester for Brawl Stars.</div>
+</aside>
 
 <header>
     <h1>Brawlping</h1>
@@ -246,7 +326,7 @@ th:last-child, td:last-child {
     <p style="font-size: 20px; max-width: 700px; margin: 25px auto 6px auto; text-align: center; line-height: 1.3; color: #ffffff; letter-spacing: -0.3px;">
   Click the "PING SERVERS" button to measure the latency from your device to the datacenters where the Brawl Stars servers are located.<br><br>
 
-  DISCLAIMER: This website is currently work in progress. Latencies can sometimes be off by around 5ms!
+  DISCLAIMER: Latencies can sometimes be off by a few milliseconds!
 </p>
 
     <p>
@@ -656,6 +736,31 @@ box.innerHTML = correctedElapsed.toString() + ' ms ' + elapsedMillisToIcon(corre
         return 0; // Fallback if blob URLs are restricted
     }
 }
+
+(function(){
+  const hamburger = document.getElementById('hamburger');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebar-overlay');
+  function setSidebar(open){
+    sidebar.classList.toggle('active', open);
+    sidebar.setAttribute('aria-hidden', String(!open));
+    overlay.classList.toggle('active', open);
+    hamburger.classList.toggle('active', open);
+    hamburger.setAttribute('aria-expanded', String(open));
+    hamburger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  hamburger.addEventListener('click', () => setSidebar(!sidebar.classList.contains('active')));
+  overlay.addEventListener('click', () => setSidebar(false));
+  document.addEventListener('keydown', e => { if(e.key === 'Escape') setSidebar(false); });
+  sidebar.querySelectorAll('.side-link').forEach(link => {
+    link.addEventListener('click', () => {
+      const url = link.dataset.url;
+      if(url){ window.open(url, '_blank', 'noopener'); setSidebar(false); }
+    });
+    link.addEventListener('keydown', e => { if(e.key === 'Enter') link.click(); });
+  });
+})();
 
 </script>
 
